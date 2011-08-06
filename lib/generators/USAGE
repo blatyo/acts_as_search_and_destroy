@@ -1,0 +1,8 @@
+Description:
+    Explain the generator
+
+Example:
+    rails generate acts_as_search_and_destroy Thing
+
+    This will create:
+        what/will/it/create
