@@ -3,7 +3,7 @@ module ActsAsSearchAndDestroy
     OPTIONS = [:api_url, :index, :id_postfix, :text, :other_fields, :categorize_by, :age]
     attr_accessor *OPTIONS
   
-    def initialize(klass, options)
+    def initialize(klass, options = {})
       @klass = klass
       options = default_options.merge(options)
       OPTIONS.each do |attribute|
@@ -54,7 +54,7 @@ module ActsAsSearchAndDestroy
   
     def default_options
       {
-        :api_url => @@api_url,
+        :api_url => Config.api_url,
         :id_prefix => @klass.name.pluralize,
         :index => @klass.name.pluralize,
         :text => :text,

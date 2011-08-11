@@ -5,6 +5,15 @@ describe ActsAsSearchAndDestroy do
     class BadJoke < ActiveRecord::Base
       acts_as_search_and_destroy
     end
+
+    class CreateBadJokes < ActiveRecord::Migration
+      def change
+        create_table :bad_jokes do |t|
+
+        t.timestamps
+      end
+    end
+ 
     
     subject{BadJoke}
     it{should be_a(ActsAsSearchAndDestroy::Indexable)}

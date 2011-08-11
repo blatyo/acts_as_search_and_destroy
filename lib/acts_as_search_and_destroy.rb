@@ -9,10 +9,17 @@ module ActsAsSearchAndDestroy
   extend ActiveSupport::Concern
   
   module ClassMethods
-    def acts_as_search_and_destroy(options)
+    def acts_as_search_and_destroy(options = {})
       self.send :include, Indexable
       @@index = Index.new(self, options)
     end
   end
+
+  class Config
+    class << self
+      attr_accessor :api_url
+    end
+  end
 end
+
 ActiveRecord::Base.send :include, ActsAsSearchAndDestroy
